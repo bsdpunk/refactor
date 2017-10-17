@@ -18,7 +18,7 @@ dim(inds)
 ## Function to extract a group
 extract <- function(ind) {
   g <- inds[ind,]
-  do.call(rbind, lapply(1:6, function(i) dk[[i]][rows[[i]][,g[[i]]], ]))
+  do.call(rbind, lapply(1:5, function(i) dk[[i]][rows[[i]][,g[[i]]], ]))
 }
 
 ## So, one combination would be 
