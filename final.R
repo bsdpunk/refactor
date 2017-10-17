@@ -7,13 +7,13 @@ dk <- read.csv("randomer.csv")
 dk <- lapply(split(dk, dk$Position), function(x) x[sample(20), ])
 #dk <- dk[-1] 
 dk <- dk[c("G","W","C","D","U")]
-3*choose(3,3)*choose(3,2)*choose(3,2)*3
-#rows <- list(t(1:4), combn(4,3), combn(4,2), t(1:4))
-rows <- list(t(1:3), combn(3,3), combn(3,2), combn(3,2),t(1:3))  # these are possible combinations of each position
+4*choose(4,3)*choose(4,2)*choose(4,2)*4
+#rows <- list(t(1:4), combn(4,4), combn(4,2), t(1:4))
+rows <- list(t(1:4), combn(4,3), combn(4,2), combn(4,2),t(1:4))  # these are possible combinations of each position
 dims <- sapply(rows, NCOL)
 inds <- expand.grid(mcmapply(`:`, 1, dims, mc.cores = (cores[1]-1)))             # indicies of combinations in 'rows'
 dim(inds)
-# [1] 334   4
+# [1] 444   4
 
 ## Function to extract a group
 extract <- function(ind) {
