@@ -3,7 +3,7 @@ library(foreach)
 cores=detectCores()
 cl <- makeCluster(cores[1]-1) #not to overload your computer
 registerDoParallel(cl)
-dk <- read.csv("new.csv")
+dk <- read.csv("highcenter.csv")
 dk <- lapply(split(dk, dk$Position), function(x) x[sample(15), ])
 #dk <- dk[-1] 
 dk <- dk[c("G","W","C","D","U")]
