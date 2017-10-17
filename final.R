@@ -3,22 +3,22 @@ library(foreach)
 cores=detectCores()
 cl <- makeCluster(cores[1]-1) #not to overload your computer
 registerDoParallel(cl)
-dk <- read.csv("random.csv")
+dk <- read.csv("randomer.csv")
 dk <- lapply(split(dk, dk$Position), function(x) x[sample(20), ])
 #dk <- dk[-1] 
 dk <- dk[c("G","W","C","D","U")]
-7*choose(7,3)*choose(7,2)*7*7
+5*choose(5,3)*choose(5,2)*choose(5,2)*5
 #rows <- list(t(1:4), combn(4,3), combn(4,2), t(1:4))
-rows <- list(t(1:7), combn(7,3), combn(7,2), t(1:7),t(1:7))  # these are possible combinations of each position
+rows <- list(t(1:5), combn(5,3), combn(5,2), combn(5,2),t(1:5))  # these are possible combinations of each position
 dims <- sapply(rows, NCOL)
 inds <- expand.grid(mcmapply(`:`, 1, dims, mc.cores = (cores[1]-1)))             # indicies of combinations in 'rows'
 dim(inds)
-# [1] 374   4
+# [1] 354   4
 
 ## Function to extract a group
 extract <- function(ind) {
   g <- inds[ind,]
-  do.call(rbind, lapply(1:5, function(i) dk[[i]][rows[[i]][,g[[i]]], ]))
+  do.call(rbind, lapply(1:6, function(i) dk[[i]][rows[[i]][,g[[i]]], ]))
 }
 
 ## So, one combination would be 
